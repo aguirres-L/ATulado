@@ -3,7 +3,7 @@ import InputChildrenCount from "./components/InputChildreCount";
 import BarrioSelector from "../../forms/BarrioSelector";
 import { useUser } from "../../../context/UserContext";
 
-// Simulamos niñeras destacadas
+// Simulamos ATs destacadas
 // Ejemplo de datos simulados de niñeras destacadas
 const FEATURED_NANNIES = [
     {
@@ -47,10 +47,11 @@ const FEATURED_NANNIES = [
 
 
 const DAYS_OPTIONS = ["L", "M", "MI", "J", "V", "S", "D"];
-const PLAN_OPTIONS = ["Niñera", "Niñera c/t domestica", "Niñera pedagógica", "Empleada domestica"];
+/* const PLAN_OPTIONS = ["Niñera", "Niñera c/t domestica", "Niñera pedagógica", "Empleada domestica"]; */
+const PLAN_OPTIONS = ["AT"];
 const SCHEDULE_OPTIONS = ["mañana", "tarde", "noche"];
-const SCHEDULE_HORA = ["Niñera por hora", "Niñera mensual"];
-const TIPO_PAGO = ["Blanco", "Negro","Monotributista"];
+const SCHEDULE_HORA = ["AT por hora", "AT mensual"];
+const TIPO_PAGO = ["Blanco", "Monotributista"];
 
 export default function RequestNannyModal({
   isOpen ,
@@ -225,7 +226,7 @@ console.log(user.sub,'user');
           }`}
         >
           <h3 className="text-lg font-bold text-gray-700 mb-4">
-            Solicitar Niñera
+            Solicitar AT
           </h3>
           <form className="space-y-4">
             {/* Selección del Plan */}
@@ -306,7 +307,7 @@ console.log(user.sub,'user');
               <label className="block text-gray-700 font-medium mb-2">
                 Selecciona los Días de la Semana:
               </label>
-              <div className="flex space-x-2 flex-wrap">
+              <div className="flex w-72 space-x-1 flex-wrap">
                 {DAYS_OPTIONS.map((day) => (
                   <button
                     key={day}
@@ -327,7 +328,7 @@ console.log(user.sub,'user');
             {/* Selección de los Días de la Semana */}
             <div>
               <label className="block text-gray-700 font-medium mb-2">
-                ¿En que zona prefieres que resida la niñera?
+                ¿En que zona prefieres que resida la AT?
               </label>
               <BarrioSelector handleZone={handleZone} />
             </div>
@@ -392,7 +393,7 @@ console.log(user.sub,'user');
           }`}
         >
           <h3 className="text-lg font-bold text-gray-700 mb-4">
-            Sobre los niños a cuidar
+          Información del acompañado
           </h3>
           <form className="space-y-4">
             {/* Selección del Plan */}
@@ -459,7 +460,7 @@ console.log(user.sub,'user');
           </form>
         </div>
 
-        {/* Paso 3: Niñeras Sugeridas (fade in/out) */}
+        {/* Paso 3: ATs Sugeridas (fade in/out) */}
         <div
           className={`transition-all duration-500 ${
             step === 3 ? "opacity-100 block" : "opacity-0 hidden"
@@ -467,14 +468,14 @@ console.log(user.sub,'user');
         >
             {user.sub === true?
           <h3 className="text-lg font-bold text-gray-700 mb-4">
-            Niñeras Recomendadas
+            ATs Recomendadas
           </h3>
           :''}
        {/*    <p className="text-sm text-gray-600 mb-4">
-            Basado en tu selección, aquí algunas niñeras destacadas:
+            Basado en tu selección, aquí algunas ATs destacadas:
           </p> */}
 
-          {user.sub === true?   // SI el valor de sub es true me muestra todas las niñeras disponibles haciendo alucion a los servicios premium 
+          {user.sub === true?   // SI el valor de sub es true me muestra todas las ATs disponibles haciendo alucion a los servicios premium 
           (<div className="space-y-4  overflow-y-auto">
             {FEATURED_NANNIES.map((nanny, index) => (
               <div

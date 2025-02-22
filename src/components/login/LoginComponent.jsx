@@ -4,7 +4,9 @@ import ProfessionalUI from "../UI/profesional/ProfessionalUI";
 import ClientUI from "../UI/clients/ClientUI";
 import { verifyUserCredentials } from "../../services/data-firebase";
 import { useUser } from "../../context/UserContext";
-import logo from "../../assets/imagen/logo-niñeras-ya.JPG"
+/* import logo from "../../assets/imagen/logo-niñeras-ya.JPG" */
+import logoBussine from "../../assets/log-ATulado.jpg"
+
 import SvgIcon from "./SvgIcon";
 const LoginComponent = () => {
   const { setUserType, setSeeNavbar } = useContext(UserTypeContext);
@@ -18,7 +20,7 @@ const LoginComponent = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userRole, setUserRole] = useState(""); // Puede ser "Profesional" o "Clients"
   const [userType1, setUserTypeLocal] = useState(""); // "Niñera" o "Madre"
-  let logoBussines = logo;
+  let logoBussines = logoBussine;
 
 
   const handleChange = (e) => {
@@ -143,7 +145,7 @@ function sendMessageToWhatsApp(phoneNumber, message) {
   }
 
   return (
-    <section className="mt-[15%] md:mt-[1%] flex items-center justify-center">
+    <section className="mt-[5%] md:mt-[1%] flex items-center justify-center">
       <div className="w-full max-w-md bg-gradient-to-b from-[#f1b6e8] to-[#fde1f9] bg-white p-8 rounded-lg shadow-xl">
      {/*    <h2 className="text-3xl font-bold text-blue-600 text-center mb-6"> */}
      <h2 className="text-3xl font-bold text-white text-center mb-6">

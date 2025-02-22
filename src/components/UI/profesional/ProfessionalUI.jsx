@@ -9,6 +9,7 @@ import CalendarProfesional from "./CalendarProfesional.jsx";
 import ModalInfoUser from "./ModalInfoUser.jsx";
 import SubscriptionComponent from "../../Subscription/SubscriptionComponent.jsx";
 import SvgRefresh from "../../../assets/imagen/svg/SvgRefresh.jsx";
+import logoBussine from "../../../assets/log-ATulado.jpg"
 
 const ProfessionalUI = () => {
   const { user, setUser } = useUser();
@@ -82,7 +83,7 @@ const ProfessionalUI = () => {
     setSelectedData(null);
   };
   
-  console.log(user,'from nana');
+/*   console.log(user,'from nana'); */
   
 
   return (
@@ -91,10 +92,11 @@ const ProfessionalUI = () => {
         <div className="flex items-center space-x-6">
           <div className="relative">
             <img
-              src={user.urlAvatar?user.urlAvatar:"https://e7.pngegg.com/pngimages/667/677/png-clipart-woman-computer-icons-user-female-avatar-woman-people-woman.png"}
-              alt="Avatar Profesional"
-              className="w-24 h-24 rounded-full border-4 border-pink-500 shadow-md"
+              src={user.urlAvatar?user.urlAvatar:logoBussine}
+              alt="Avatar Cliente"
+          className="w-20 h-20 rounded-full cursor-pointer"
             />
+         
             <span
               className={`absolute bottom-0 right-0 w-6 h-6 ${statusColor} border-2 border-white rounded-full shadow`}
             ></span>

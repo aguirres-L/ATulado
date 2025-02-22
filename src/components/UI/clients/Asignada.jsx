@@ -87,7 +87,7 @@ if(isMatch)   console.log(isMatch, "isMatcha");
         </div>
       )}
     
-      <h3 className="text-xl font-bold text-gray-700 mb-4" >{isMatch[0]?.nanny?'Niñera Asignada':'Niñera en Espera'}</h3>
+      <h3 className="text-xl font-bold text-gray-700 mb-4" >{isMatch[0]?.nanny?'AT Asignada':'AT en Espera'}</h3>
       {user.services.length > 0 ? (
   <div className="bg-white p-6 rounded-lg shadow-lg">
     {isMatch[0]?.nanny && (
@@ -129,13 +129,13 @@ if(isMatch)   console.log(isMatch, "isMatcha");
 
 <div className=" p-6 rounded-lg text-center">
    {/*  <p className="text-red-500 font-medium mb-4">
-      Todavía no se ha asignado una niñera para este servicio.
+      Todavía no se ha asignado una AT para este servicio.
     </p> */}
     <button
       onClick={() => setIsModalOpen(true)}
       className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
     >
-      Solicitar Niñera
+      Solicitar AT
     </button>
   </div>
 }
@@ -153,7 +153,7 @@ if(isMatch)   console.log(isMatch, "isMatcha");
   <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
     <div className="bg-white p-6 rounded-lg shadow-lg w-96">
       <h3 className="text-lg font-bold text-gray-700 mb-4">
-        Solicitar Niñera
+        Solicitar AT
       </h3>
       <form className="space-y-4">
         {/* Selección del Plan */}

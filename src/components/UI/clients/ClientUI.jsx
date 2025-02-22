@@ -11,7 +11,8 @@ import ModalSelectAvatar from "./ModalSelectAvatar.jsx"; // Importa el modal
 import ModalFeedBack from "./ModalFeedback.jsx"
 
 
-import logoNana from "../../../assets/imagen/logo-niñeras-ya.JPG"
+/* import logoNana from "../../../assets/imagen/logo-niñeras-ya.JPG" */
+import logoBussine from "../../../assets/log-ATulado.jpg"
 const ClientUI = () => {
   const { user, setUser } = useUser(); // Accede a los datos del usuario desde el contexto
   const [isEditing, setIsEditing] = useState(false); // Controla el modo edición
@@ -35,20 +36,34 @@ const ClientUI = () => {
   const [buttonRefresh, setButtonRefresh] = useState(false);
   const [showModalFeedBack, setShowModalFeedBack] = useState(null);
   const [setserviceSelect, setSetserviceSelect] = useState([]);
-  const [avatarUrl, setAvatarUrl] = useState(formData?formData.urlAvatar:logoNana); 
+  const [avatarUrl, setAvatarUrl] = useState(logoBussine); 
 
   useEffect(()=>{
     async function getUserUpdate() { 
       let nameColletionCliente = 'madre'
       try {
         let newDataUser =  await  getDocumentsFirebase(nameColletionCliente) /// Aca va el nombre de la collection del cliente madre o acompañado o paciente
-       console.log(newDataUser, ' refesh dato user');
+ /*       console.log(newDataUser, ' refesh dato user'); */
        let filterData = newDataUser.filter((item)=>item.idFirestore === user.idFirestore)
-       console.log(filterData,'dato filtrado y actualizado ');
+     /*   console.log(filterData,'dato filtrado y actualizado '); */
            // Actualizar el estado global del usuario con los datos filtrados
       if (filterData.length > 0) {
         setUser(filterData[0]); // Establece el primer resultado filtrado como el usuario actualizado
+         
       }
+       // Si se encontraron datos, actualizar el estado del avatar
+   /*     console.log(filterData[0]?.urlAvatar,'filterData[0].avatarUrl');
+        */
+       if (filterData[0]?.urlAvatar) {
+        setAvatarUrl(filterData[0]?.urlAvatar); // Usar la URL del avatar de Firebase
+/*         console.log("Avatar actualizado:", filterData[0]?.urlAvatar); */
+      } else {
+        setAvatarUrl(logoBussine); // Usar la imagen por defecto si no hay avatarUrl
+     /*    console.log("No se encontró avatarUrl, usando imagen por defecto"); */
+      }
+      
+      
+      /* formData?formData.urlAvatar:logoBussine */
       } catch (error) {
         console.log(error);
         throw Error
@@ -120,6 +135,7 @@ const handleSelectAvatar = (url) => {
   setFormData({ ...formData, urlAvatar: url }); // Actualiza formData con la nueva URL del avatar
   console.log(url, 'url avatar actualizada');
 };
+/* console.log(user.urlAvatar,'from refresh'); */
 
   return (
     <section className="bg-gray-100 min-h-screen py-8 px-6">
@@ -193,19 +209,16 @@ const handleSelectAvatar = (url) => {
               </button>
             </div>
           ) : (
+          <>
+            
+            <div className="mt-6 flex flex-row w-full justify-around ">
             <button
               onClick={() => setIsEditing(true)}
               className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
             >
               Editar Información
             </button>
-          )}
-        </div>
-
-        <div className="mt-6 flex flex-row w-full justify-around ">
-
-       {/*    <h3 className="text-xl font-bold text-gray-700">{}</h3> */}
-          <button
+            <button
             onClick={handleRefresh}
             className="bg-[#e896ef] text-white px-4  rounded-md ml-4 hover:bg-[#eec7e9]"
 
@@ -214,9 +227,30 @@ const handleSelectAvatar = (url) => {
                         <SvgRefresh fetchData={handleRefresh}/>
            
           </button>
+            </div>
+            
+            </>
+          
+          )}
+        </div>
+
+
+{/* button sub */}
+        <div className="mt-6 flex flex-row w-full justify-around ">
+
+       {/*    <h3 className="text-xl font-bold text-gray-700">{}</h3> */}
+      {/*     <button
+            onClick={handleRefresh}
+            className="bg-[#e896ef] text-white px-4  rounded-md ml-4 hover:bg-[#eec7e9]"
+
+          >
+           
+                        <SvgRefresh fetchData={handleRefresh}/>
+           
+          </button> */}
           
            {/* Cambia 'parent' a 'nanny' según el tipo de usuario */}
-      <SubscriptionComponent userType="parent" />
+  {/*     <SubscriptionComponent userType="parent" /> */}
           
           </div>
           
